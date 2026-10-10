@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate And Badge Design</title>
+    <!-- Link to external stylesheet for styling the page -->
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- Favicon for the page -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header section with logo and navigation -->
+        <header>
+            <div class="logo">Certificate And Badge Generator</div>
+            <nav>
+                <ul>
+                    <!-- Navigation links -->
+                    <li class="active"><a href="#">Designs</a></li>
+                    <li><a href="#">If you need</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <aside>
+                <!-- Sidebar menu for style selection -->
+                <div class="sidebar-menu">
+                    <div>
+                        <label for="styleSelect">Choose Certificate or Badge:</label>
+                        <select id="styleSelect">
+                            <option value="certificate">Certificate</option>
+                            <option value="badge">Badge</option>
+                        </select>
+                    </div>
+
+                    <br>
+
+                    <!-- Radio buttons for art style selection -->
+                    <div>
+                        <p>Choose style:</p>
+                        <label>
+                            <input type="radio" name="artStyle" value="Scalable Vector Graphics" checked>
+                            SVG
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="painting">
+                            Painting
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="graphic">
+                            Graphic
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="realism">
+                            Realism
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="photorealism">
+                            Photorealism
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="expressionism">
+                            Expressionism
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="impressionism">
+                            Impressionism
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="astract">
+                            Abstract
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="surrealism">
+                            Surrealism
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="artStyle" value="pop Art">
+                            Pop Art
+                        </label>
+
+                    </div>
+
+                    <br>
+
+                    <!-- Color picker for background color -->
+                    <div>
+                        <label for="bgColor">Background Color:</label>
+                        <input type="color" id="bgColor" name="bgColor" value="#ffffff">
+                    </div>
+
+                    <br>
+
+                    <!-- Checkboxes for additional options -->
+                    <p>Select Add Options:  Can More Than One</p>
+                    <div>
+                        <label>
+                            <input type="checkbox" id="pureGraphic">
+                            Pure Graphic Representation
+                        </label>
+                    </div>
+                    </br>
+                    <div>
+                        <label>
+                            <input type="checkbox" id="matchCanvasSize">
+                            Match Canvas Size
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="highDetailRendering">
+                            High Detail Rendering
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="vibrantColorPalette">
+                            Vibrant Color Palette
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="dynamicLighting">
+                            Dynamic Lighting
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="realisticTextures">
+                            Realistic Textures
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="minimalistDesign">
+                            Minimalist Design
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="abstractArtStyle">
+                            Abstract Art Style
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="vintageFilter">
+                            Vintage Filter
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="surrealComposition">
+                            Surreal Composition
+                        </label>
+                    </div>
+
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="geometricPatterns">
+                            Geometric Patterns
+                        </label>
+                    </div>
+                
+                    </br>
+
+                    <div>
+                        <label>
+                            <input type="checkbox" id="monochromeTheme">
+                            Monochrome Theme
+                        </label>
+                    </div>
+
+                </div>
+                
+            </aside>
+            <section class="design-area">
+                <!-- Header for design creation area -->
+                <div class="design-header">
+                    <h2>Write Your Design</h2>
+                    <input type="text" id="userInput" placeholder="Describe your badge style">
+                    <button onclick="generateBadge()">Create Your Design</button>
+                </div>
+                <div>
+                    <!-- Text customization options -->
+                    <input type="text" id="customText" placeholder="Add your text">
+                    Size : 
+                    <input type="number" id="fontSize" placeholder="Font Size" value="20">
+                    font :
+                    <select id="fontFamily">
+                        <option value="Arial">Arial</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Palatino">Palatino</option>
+                        <option value="Garamond">Garamond</option>
+                        <option value="Bookman">Bookman</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
+                        <option value="Arial Black">Arial Black</option>
+                        <option value="Impact">Impact</option>
+                        <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                        <option value="Tahoma">Tahoma</option>
+                        <option value="Geneva">Geneva</option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Times">Times</option>
+                        <option value="Lucida Console">Lucida Console</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Optima">Optima</option>
+                    </select>
+                    Color : 
+                    <input type="color" id="fontColor" name="fontColor" value="#000000">
+                    <button onclick="addTextToCanvas()">Add Text</button>
+                    <button onclick="deleteSelectedText()">Delete Text</button>
+                </div>
+
+
+                <br>
+
+                <!-- Canvas for designing badges -->
+                <canvas id="designCanvas" width="1024" height="1024" style="border:1px solid #000;"></canvas>
+                <!-- Button to download the designed image -->
+                <button id="downloadBtn" style="display: none;" onclick="downloadBadge()">Download your Img</button>
+
+                <br>
+
+                <div>
+                    <input type="email" id="recipientEmail" placeholder="Recipient's Email">
+                    <button onclick="sendEmail()">Send Email</button>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Import fabric.js library for canvas manipulation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    
+    <script>
+        // Initialize the canvas
+        const canvas = new fabric.Canvas('designCanvas', {
+            selection: false // Disable selection of the background image
+        });
+        let imageUrl = '';
+
+        // Function to generate badge based on user input
+        async function generateBadge() {
+            const userInput = document.getElementById('userInput').value;
+            const styleSelect = document.getElementById('styleSelect').value;
+            const artStyle = document.querySelector('input[name="artStyle"]:checked').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const pureGraphic = document.getElementById('pureGraphic').checked;
+            const matchCanvasSize = document.getElementById('matchCanvasSize').checked;
+            const highDetailRendering = document.getElementById('highDetailRendering').checked;
+            const vibrantColorPalette = document.getElementById('vibrantColorPalette').checked;
+            const dynamicLighting = document.getElementById('dynamicLighting').checked;
+            const realisticTextures = document.getElementById('realisticTextures').checked;
+            const minimalistDesign = document.getElementById('minimalistDesign').checked;
+            const abstractArtStyle = document.getElementById('abstractArtStyle').checked;
+            const vintageFilter = document.getElementById('vintageFilter').checked;
+            const surrealComposition = document.getElementById('surrealComposition').checked;
+            const geometricPatterns = document.getElementById('geometricPatterns').checked;
+            const monochromeTheme = document.getElementById('monochromeTheme').checked;
+
+            let prompt = `Generate a ${artStyle} style ${styleSelect} with a ${bgColor} background that looks like: ${userInput}`;
+
+            if (pureGraphic) {
+                prompt = `Generate a pure graphic ${artStyle} style ${styleSelect} with a ${bgColor} background, without any text: ${userInput}, No text required.`;
+            }
+
+            if (matchCanvasSize) prompt += " Ensure the image matches the canvas size.";
+            if (highDetailRendering) prompt += " Apply high detail rendering.";
+            if (vibrantColorPalette) prompt += " Use a vibrant color palette.";
+            if (dynamicLighting) prompt += " Include dynamic lighting effects.";
+            if (realisticTextures) prompt += " Incorporate realistic textures.";
+            if (minimalistDesign) prompt += " Follow a minimalist design approach.";
+            if (abstractArtStyle) prompt += " Embrace an abstract art style.";
+            if (vintageFilter) prompt += " Apply a vintage filter.";
+            if (surrealComposition) prompt += " Create a surreal composition.";
+            if (geometricPatterns) prompt += " Feature geometric patterns.";
+            if (monochromeTheme) prompt += " Use a monochrome theme.";
+        
+            // Clear the canvas
+            canvas.clear();
+        
+            try {
+                const response = await fetch('/generate-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt })
+                });
+        
+                if (response.ok) {
+                    const data = await response.json();
+                    imageUrl = data.url;
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.src = imageUrl;
+                    img.onload = function() {
+                        const fabricImage = new fabric.Image(img, {
+                            selectable: false // Make the image non-selectable
+                        });
+                        canvas.add(fabricImage);
+                        canvas.sendToBack(fabricImage);
+                    };
+        
+                    document.getElementById('downloadBtn').style.display = 'block';
+                } else {
+                    console.error('Server error:', response.status);
+                }
+            } catch (error) {
+                console.error('Error generating badge:', error);
+            }
+        }
+
+        // Function to add text to the canvas
+        function addTextToCanvas() {
+            const text = document.getElementById('customText').value;
+            const fontSize = parseInt(document.getElementById('fontSize').value, 10);
+            const fontFamily = document.getElementById('fontFamily').value;
+            const fontColor = document.getElementById('fontColor').value;
+            const textObject = new fabric.Textbox(text, {
+                left: 50,
+                top: 50,
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                fill: fontColor, // Text color
+                editable: true,
+                lockScalingY: true // Lock scaling to prevent text resizing
+            });
+            canvas.add(textObject);
+            textObject.bringToFront(); // Ensure text is always on top
+            canvas.setActiveObject(textObject);
+        }
+
+        // Function to delete selected text from the canvas
+        function deleteSelectedText() {
+            const activeObject = canvas.getActiveObject();
+            if (activeObject && activeObject.type === 'textbox') {
+                canvas.remove(activeObject);
+            }
+        }
+
+        // Update font properties dynamically when text is selected
+        canvas.on('object:selected', function() {
+            const activeObject = canvas.getActiveObject();
+            if (activeObject && activeObject.type === 'textbox') {
+                document.getElementById('fontSize').value = activeObject.fontSize;
+                document.getElementById('fontFamily').value = activeObject.fontFamily;
+                document.getElementById('fontColor').value = activeObject.fill;
+            }
+        });
+
+        // Download the badge as an image
+        function downloadBadge() {
+            const link = document.createElement('a');
+            link.download = 'Certificate & badge.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Function to send the canvas image via email
+        async function sendEmail() {
+            const email = document.getElementById('recipientEmail').value;
+            const image = canvas.toDataURL();
+
+            try {
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, image })
+                });
+
+                if (response.ok) {
+                    alert('Email sent successfully!');
+                } else {
+                    console.error('Error sending email:', response.status);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
